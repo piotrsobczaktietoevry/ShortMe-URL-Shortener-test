@@ -9,5 +9,6 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 COPY . .
-
+RUN export $(cat .env) | xargs
+ 
 CMD ["python", "run.py"]
