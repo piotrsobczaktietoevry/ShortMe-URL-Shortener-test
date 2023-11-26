@@ -1,8 +1,6 @@
 pipeline {
   environment {
-    imagename =  "ps0b/devops-inkubator"
-    registryCredential = 'ps0b-dockerhub'
-		DOCKERHUB_CREDENTIALS=credentials('dockerhub-tonen')
+    DOCKERHUB_CREDENTIALS=credentials('dockerhub-token')
 	}
   }
   agent any
