@@ -2,7 +2,8 @@ pipeline {
   environment {
     imagename =  "ps0b/devops-inkubator"
     registryCredential = 'ps0b-dockerhub'
-    dockerImage = ''
+		DOCKERHUB_CREDENTIALS=credentials('dockerhub-tonen')
+	}
   }
   agent any
   stages {
@@ -24,6 +25,11 @@ pipeline {
     }
     stage('Push to local repo') {
       steps{
+        sh "docker push localhost:5001/shortner-app:${BUILD_NUMBER}"
+      }
+    stage('Push to dockerhub repo') {
+      steps{
+        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
         sh "docker push localhost:5001/shortner-app:${BUILD_NUMBER}"
       }
     }
