@@ -5,8 +5,8 @@ pipeline {
         timeout(time: 15, unit: 'MINUTES')
   }
   environment {
-    DOCKERHUB_TOKEN=credentials('dockerhub-token')
-	}
+       DOCKERHUB_TOKEN=credentials('dockerhub-token')
+  }
   stages {
     stage('Git checkout repo') {
       steps {
@@ -28,6 +28,7 @@ pipeline {
       steps{
         sh "docker push localhost:5001/shortner-app:${BUILD_NUMBER}"
       }
+    } 
     stage('Push to dockerhub repo') {
       steps{
         sh "echo ${DOCKERHUB_TOKEN_PSW} | docker login -u ${DOCKERHUB_TOKEN_USR} --password-stdin"
