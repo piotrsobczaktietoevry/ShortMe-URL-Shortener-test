@@ -32,7 +32,7 @@ pipeline {
     stage('Push to dockerhub repo') {
       steps{
         sh "echo ${DOCKERHUB_TOKEN_PSW} | docker login -u ${DOCKERHUB_TOKEN_USR} --password-stdin"
-	sh "docker tag shortner-app:${BUILD_NUMBER} devops-inkubator:${BUILD_NUMBER}
+	sh "docker tag shortner-app:${BUILD_NUMBER} devops-inkubator:${BUILD_NUMBER}"
         sh "docker push ps0b/devops-inkubator:${BUILD_NUMBER}"
 	sh "docker logout"     
       }
