@@ -32,7 +32,7 @@ pipeline {
       steps{
         sh "echo ${DOCKERHUB_TOKEN_PSW} | docker login -u ${DOCKERHUB_TOKEN_USR} --password-stdin"
 	sh 
-        sh "docker push localhost:5001/shortner-app:${BUILD_NUMBER}"
+        sh "docker push ps0b/devops-inkubator:${BUILD_NUMBER}"
       }
     }
   }
