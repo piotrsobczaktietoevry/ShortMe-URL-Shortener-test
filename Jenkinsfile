@@ -2,7 +2,8 @@ pipeline {
   agent any
   options {
         // Timeout counter starts AFTER agent is allocated
-        timeout(time: 15, unit: 'MINUTES')	
+        timeout(time: 15, unit: 'MINUTES')
+  }
   environment {
     DOCKERHUB_CREDENTIALS=credentials('dockerhub-token')
 	}
