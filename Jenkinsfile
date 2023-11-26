@@ -7,7 +7,6 @@ pipeline {
   environment {
     DOCKERHUB_CREDENTIALS=credentials('dockerhub-token')
 	}
-  }
   stages {
     stage('Git checkout repo') {
       steps {
